@@ -12,10 +12,9 @@ const MainProvider = ({children}) => {
     useEffect(() => {
         const apiFetch = async() => {
             
-            const resp = await axios.get('https://pokeapi.co/api/v2/pokemon/?limit=13')
+            const resp = await axios.get('https://pokeapi.co/api/v2/pokemon/?limit=130')
             setPokeList(resp.data.results)
             console.log("resp" , resp.data.results)
-            setSearchList(resp.data.results)
         }
         // { category ? apiFetch() : null}
         apiFetch()

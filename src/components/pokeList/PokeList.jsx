@@ -12,7 +12,8 @@ const PokeList = () => {
                     return(
                         <div key={index}>
                             <PokeCard
-                            pokemon = {pokemon}/>
+                            pokemon = {pokemon}
+                            index = {index}/>
                         </div>
                     )
                 })}
@@ -26,7 +27,8 @@ const PokeList = () => {
                     return(
                         <div key={index}>
                             <PokeCard
-                            pokemon = {pokemon}/>
+                            pokemon = {pokemon}
+                            index = {index}/>
                         </div>
                     )
                 })}
