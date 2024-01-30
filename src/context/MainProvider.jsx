@@ -8,20 +8,29 @@ const MainProvider = ({children}) => {
     const [searchList, setSearchList] = useState([])
     const [darkmodeStatus, setDarkmodeStatus] = useState(false)
     const [pokeList, setPokeList] = useState([])
+    const [pokeName, setPokeName] = useState("")
+    const [pokeDetail, setPokeDetail] = useState([])
 
     useEffect(() => {
         const apiFetch = async() => {
             
-            const resp = await axios.get('https://pokeapi.co/api/v2/pokemon/?limit=130')
+            const resp = await axios.get('https://pokeapi.co/api/v2/pokemon/?limit=13')
             setPokeList(resp.data.results)
             console.log("resp" , resp.data.results)
         }
-        // { category ? apiFetch() : null}
         apiFetch()
     }, [])
+    
+    useEffect(() =>{
+        const apiFetch = async() => {
+            const resp = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokeName}`)
+            setPokeDetail(resp.data)
+        }
+        apiFetch()
+    },[pokeName])
     return (
     <>
-        <mainContext.Provider value={{searchList, setSearchList, pokeList, setPokeList, darkmodeStatus, setDarkmodeStatus, search, setSearch}}>
+        <mainContext.Provider value={{setPokeName, pokeDetail, searchList, setSearchList, pokeList, setPokeList, darkmodeStatus, setDarkmodeStatus, search, setSearch}}>
             {children}
         </mainContext.Provider>
     </>

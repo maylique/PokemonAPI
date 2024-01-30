@@ -1,7 +1,11 @@
 import React, { useContext } from 'react'
+import { Link } from 'react-router-dom';
+import Detail from '../../pages/detail/Detail';
+import { mainContext } from '../../context/MainProvider';
 
 
 const PokeCard = ({pokemon,index}) => {
+    const {setPokeName} = useContext(mainContext)
     let link = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index+1}.png`
     let num = null
     switch(index?.toString().length){
@@ -20,12 +24,14 @@ const PokeCard = ({pokemon,index}) => {
         
     }
   return (
+    <>
     <div>
         <img src={link} alt="" />
         <p>{num}</p>
         <p>{pokemon.name}</p>
     </div>
-  )
+    <Link to={"/detail"}><button onClick={setPokeName(pokemon?.name)}>details</button></Link>
+  </>)
 }
 
 export default PokeCard
