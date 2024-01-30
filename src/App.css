@@ -49,3 +49,10 @@
 #white {
   background-color: white;
 }
+
+.test{
+  display: flex;
+}
+#hide{
+  display: none;
+}

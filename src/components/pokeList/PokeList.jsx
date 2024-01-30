@@ -1,11 +1,42 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { mainContext } from '../../context/MainProvider'
+import PokeCard from '../pokeCard/pokeCard'
 
 const PokeList = () => {
-  return (
-    <div>
-        
-    </div>
-  )
-}
+    const {search,searchList, pokeList, setPokeList} = useContext(mainContext)
+    if(search.length < 1){
+        return (
+            <>
+            <div id='pokelist' >
+                {pokeList?.map((pokemon, index) => {
+                    return(
+                        <div key={index}>
+                            <PokeCard
+                            pokemon = {pokemon}/>
+                        </div>
+                    )
+                })}
+            </div>
+            </>
+    )}else{
+        return(
+            <>
+            <div id='searchlist'>
+                {searchList?.map((pokemon, index) => {
+                    return(
+                        <div key={index}>
+                            <PokeCard
+                            pokemon = {pokemon}/>
+                        </div>
+                    )
+                })}
+            </div>
+            
+            </>
+        )
+        }
+    }
+
+
 
 export default PokeList

@@ -2,7 +2,7 @@ import React, { useContext ,useEffect} from 'react'
 import { Link } from  'react-router-dom'
 import { mainContext } from '../../context/MainProvider'
 const Nav = () => {
-    const {search, setSearch, darkmodeStatus, setDarkmodeStatus} = useContext(mainContext)
+    const {searchList, setSearchList,pokeList, setPokeList, search, setSearch, darkmodeStatus, setDarkmodeStatus} = useContext(mainContext)
     const darkmodeToggle = (event)=>{
       event.preventDefault()
       if (darkmodeStatus){
@@ -13,22 +13,20 @@ const Nav = () => {
         document.body.id = 'dark';
         setDarkmodeStatus(true)
       }
-      console.log("darkmode:", darkmodeStatus)
-      
+      setPokeList(filteredList)
     }    
     
-  //   useEffect(() => {
-  //     if (darkmodeStatus) {
-  //         document.body.id = 'dark';
-  //     } else {
-  //         document.body.id = 'white';
-  //     }
-  // }, [darkmodeStatus]);
+  useEffect(()=> {
+      console.log("check")
+      const filteredList = pokeList.filter( pokemon => pokemon.name.toLowerCase().includes(search))
+      setSearchList(filteredList)
+    },[search])
+
 
   return (
     <div id='nav'>
         <Link to= "/"><img src="https://cdn.pidgi.net/images/thumb/b/b8/Logo_-_Pokemon_20th_Anniversary.svg/735px-Logo_-_Pokemon_20th_Anniversary.svg.png" alt="Pokemon Logo" /></Link>
-        <form onSubmit={setSearch}>
+        <form>
             <button id='buttonBack'><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z"/></svg></button>
             <input type="text" onChange={(e) => setSearch(e.target.value)}/>
             <button onClick={darkmodeToggle}><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
