@@ -11,17 +11,28 @@ const MainProvider = ({children}) => {
     const [pokeName, setPokeName] = useState("")
     const [pokeDetail, setPokeDetail] = useState([])
     const [pokeId, setPokeId] = useState("")
+    const [urlList, setUrlList] = useState([])
 
     useEffect(() => {
         const apiFetch = async() => {
             
             const resp = await axios.get('https://pokeapi.co/api/v2/pokemon/?limit=13')
-            setPokeList(resp.data.results)
+            setUrlList(resp.data.results)
             console.log("resp" , resp.data.results)
         }
         apiFetch()
     }, [])
-    
+    useEffect(() => {
+        const apiFetch = async() => {
+            console.log("check")
+            {urlList.forEach(async(url)=> {
+                const resp = await axios.get(`${url.url}`)
+                pokeList.push(resp.data)
+            })}
+        }
+        apiFetch()
+    }, [urlList])
+    console.log("pokeList", pokeList) 
     useEffect(() =>{
         const apiFetch = async() => {
             const resp = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokeName}`)
@@ -31,7 +42,7 @@ const MainProvider = ({children}) => {
     },[pokeName])
     return (
     <>
-        <mainContext.Provider value={{setPokeName, pokeDetail, searchList, setSearchList, pokeList, setPokeList, darkmodeStatus, setDarkmodeStatus, search, setSearch, pokeId, setPokeId}}>
+        <mainContext.Provider value={{urlList, setUrlList, setPokeName, pokeDetail, searchList, setSearchList, pokeList, setPokeList, darkmodeStatus, setDarkmodeStatus, search, setSearch, pokeId, setPokeId}}>
             {children}
         </mainContext.Provider>
     </>

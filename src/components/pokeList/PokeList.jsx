@@ -3,12 +3,12 @@ import { mainContext } from '../../context/MainProvider'
 import PokeCard from '../pokeCard/pokeCard'
 
 const PokeList = () => {
-    const {search,searchList, pokeList, setPokeList} = useContext(mainContext)
+    const {search,searchList, pokeList, setPokeList, urlList, setUrlList} = useContext(mainContext)
     if(search.length < 1){
         return (
             <>
             <div id='pokelist' >
-                {pokeList?.map((pokemon, index) => {
+                {urlList?.map((pokemon, index) => {
                     return(
                         <div key={index}>
                             <PokeCard
