@@ -8,6 +8,7 @@ const PokeCard = ({pokemon,index}) => {
     const {setPokeName} = useContext(mainContext)
     let link = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index+1}.png`
     let num = null
+    let name = pokemon.name
     switch(index?.toString().length){
         case 1:
             num= `#000${index+1}`;
@@ -30,7 +31,7 @@ const PokeCard = ({pokemon,index}) => {
         <p>{num}</p>
         <p>{pokemon.name}</p>
     </div>
-    <Link to={"/detail"}><button onClick={setPokeName(pokemon?.name)}>details</button></Link>
+    <Link to={"/detail"}><button onClick={setPokeName(name)}>details</button></Link>
   </>)
 }
 

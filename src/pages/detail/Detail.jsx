@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { mainContext } from '../../context/MainProvider'
+import Nav2 from '../../components/nav/Nav2'
 
 const Detail = () => {
     const {pokeName, setPokeName, pokeDetail} = useContext(mainContext)
@@ -26,6 +27,7 @@ const Detail = () => {
 
   return (
     <>
+        <Nav2/>
         <img src={link} alt="" />
         <div>
             <p>{num}</p>

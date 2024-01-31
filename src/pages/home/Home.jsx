@@ -1,11 +1,11 @@
 import React from 'react'
-import Header from '../../components/header/Header'
 import PokeList from '../../components/pokeList/PokeList'
+import Nav from '../../components/nav/Nav'
 
 const Home = () => {
   return (
     <div>
-      <Header/>
+      <Nav/>
       <PokeList/>
     </div>
   )
