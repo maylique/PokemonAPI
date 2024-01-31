@@ -1,14 +1,21 @@
 import { useContext } from "react";
 import HomeCard from "../components/HomeCard";
+import { mainContext } from "../context/MainProvider";
 
-const pokemon = useContext()
 
 const Home = () => {
+    const { pokemonData, setPokemonData,apiURL, setApiURL, setNextURL} = useContext(mainContext)
+    console.log(pokemonData);
     return ( 
         <>
-        <HomeCard
-        pokemon={pokemon}
-         />
+            {pokemonData.map((pokemon, index) => {
+                return(
+                    <HomeCard key={index}
+                pokemon={pokemon}
+                />
+                )
+            })}
+            {/* <button onClick={()=>}>hahhaah</button> */}
         </>
      );
 }
