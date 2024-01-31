@@ -17,7 +17,6 @@ const Nav = () => {
     }    
     
   useEffect(()=> {
-      console.log("check")
       const filteredList = pokeList.filter( pokemon => pokemon.name.toLowerCase().includes(search))
       setSearchList(filteredList)
     },[search])

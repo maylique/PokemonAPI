@@ -15,12 +15,10 @@ const PokeCard = ({pokemon,index}) => {
     useEffect(() =>{
         const apiFetch = async() => {
             const resp = await axios.get(fetchLink)
-            setPokeId(resp.data)
+            setPokeId(resp.data.id)
         }
         apiFetch()
-    },[])
-    console.log("ID:", pokeId)
-    console.log("pokemon:" , pokemon)
+    },[pokemon])
     switch(pokeId.length){
         case 1:
             num= `#000${pokeId}`;

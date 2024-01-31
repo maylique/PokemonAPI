@@ -7,7 +7,6 @@ const Detail = () => {
     // setPokeName(1)
     let link = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokeDetail?.id}.png`
     let num
-    console.log(pokeDetail)
     switch(pokeDetail?.id?.toString().length){
         case 1:
             num= `#000${pokeDetail?.id}`;
@@ -15,10 +14,10 @@ const Detail = () => {
         case 2:
             num= `#00${pokeDetail?.id}`;
             break;
-        case 1:
+        case 3:
             num= `#0${pokeDetail?.id}`;
             break;
-        case 1:
+        case 4:
             num= `#${pokeDetail?.id}`;
             break;
         
@@ -36,7 +35,7 @@ const Detail = () => {
         <div id='types'>
             {pokeDetail?.types?.map((type, index)=>{
                 return(
-                    <p>{type?.type.name}</p>
+                    <p>{type.type?.name}</p>
                 )
             })}
         </div>
