@@ -10,6 +10,7 @@ const MainProvider = ({children}) => {
     const [pokeList, setPokeList] = useState([])
     const [pokeName, setPokeName] = useState("")
     const [pokeDetail, setPokeDetail] = useState([])
+    const [pokeId, setPokeId] = useState("")
 
     useEffect(() => {
         const apiFetch = async() => {
@@ -30,7 +31,7 @@ const MainProvider = ({children}) => {
     },[pokeName])
     return (
     <>
-        <mainContext.Provider value={{setPokeName, pokeDetail, searchList, setSearchList, pokeList, setPokeList, darkmodeStatus, setDarkmodeStatus, search, setSearch}}>
+        <mainContext.Provider value={{setPokeName, pokeDetail, searchList, setSearchList, pokeList, setPokeList, darkmodeStatus, setDarkmodeStatus, search, setSearch, pokeId, setPokeId}}>
             {children}
         </mainContext.Provider>
     </>

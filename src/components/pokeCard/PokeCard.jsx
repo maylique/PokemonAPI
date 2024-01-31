@@ -1,26 +1,38 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import Detail from '../../pages/detail/Detail';
 import { mainContext } from '../../context/MainProvider';
+import axios from 'axios';
 
 
 const PokeCard = ({pokemon,index}) => {
-    const {setPokeName} = useContext(mainContext)
+    const {setPokeName, setPokeId, pokeId} = useContext(mainContext)
     let link = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index+1}.png`
     let num = null
     let name = pokemon.name
-    switch(index?.toString().length){
+    let fetchLink = pokemon.url
+
+    useEffect(() =>{
+        const apiFetch = async() => {
+            const resp = await axios.get(fetchLink)
+            setPokeId(resp.data)
+        }
+        apiFetch()
+    },[])
+    console.log("ID:", pokeId)
+    console.log("pokemon:" , pokemon)
+    switch(pokeId.length){
         case 1:
-            num= `#000${index+1}`;
+            num= `#000${pokeId}`;
             break;
         case 2:
-            num= `#00${index+1}`;
+            num= `#00${pokeId}`;
             break;
-        case 1:
-            num= `#0${index+1}`;
+        case 3:
+            num= `#0${pokeId}`;
             break;
-        case 1:
-            num= `#${index+1}`;
+        case 4:
+            num= `#${pokeId}`;
             break;
         
     }
