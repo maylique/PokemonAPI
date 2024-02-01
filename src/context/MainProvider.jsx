@@ -18,28 +18,27 @@ const MainProvider = ({children}) => {
             
             const resp = await axios.get('https://pokeapi.co/api/v2/pokemon/?limit=13')
             setUrlList(resp.data.results)
-            console.log("resp" , resp.data.results)
         }
         apiFetch()
     }, [])
     useEffect(() => {
         const apiFetch = async() => {
-            console.log("check")
-            {urlList.forEach(async(url)=> {
+            let data = []
+            {urlList?.forEach(async(url)=> {
                 const resp = await axios.get(`${url.url}`)
-                pokeList.push(resp.data)
+                data.push(resp.data)
             })}
+            setPokeList(data)
         }
         apiFetch()
     }, [urlList])
-    console.log("pokeList", pokeList) 
-    useEffect(() =>{
-        const apiFetch = async() => {
-            const resp = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokeName}`)
-            setPokeDetail(resp.data)
-        }
-        apiFetch()
-    },[pokeName])
+    // useEffect(() =>{
+    //     const apiFetch = async() => {
+    //         const resp = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokeName}`)
+    //         setPokeDetail(resp.data)
+    //     }
+    //     apiFetch()
+    // },[pokeName])
     return (
     <>
         <mainContext.Provider value={{urlList, setUrlList, setPokeName, pokeDetail, searchList, setSearchList, pokeList, setPokeList, darkmodeStatus, setDarkmodeStatus, search, setSearch, pokeId, setPokeId}}>
