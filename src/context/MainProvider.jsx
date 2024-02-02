@@ -1,41 +1,49 @@
-import React, { createContext, useState ,useEffect} from 'react'
-import axios from 'axios'
+import axios from "axios";
+import { createContext, useEffect, useState } from "react";
 
 export const mainContext = createContext()
 
 const MainProvider = ({children}) => {
-    const [search, setSearch] = useState("")
-    const [searchList, setSearchList] = useState([])
-    const [darkmodeStatus, setDarkmodeStatus] = useState(false)
-    const [pokeList, setPokeList] = useState([])
-    const [pokeName, setPokeName] = useState("")
-    const [pokeDetail, setPokeDetail] = useState([])
-    const [pokeId, setPokeId] = useState("")
+    const [apiURL, setApiURL] = useState("https://pokeapi.co/api/v2/pokemon/?limit=151")
+    const [pokemonData, setPokemonData] = useState([])
+    const [nextURL, setNextURL] = useState()
+    const [search, setSearch] = useState('')
+    const [pokeType, setPokeType] = useState([])
+    const [darkMode, setdarkMode] = useState(true)
+
 
     useEffect(() => {
-        const apiFetch = async() => {
-            
-            const resp = await axios.get('https://pokeapi.co/api/v2/pokemon/?limit=13')
-            setPokeList(resp.data.results)
-            console.log("resp" , resp.data.results)
+        const getType = async() => {
+            const resp = await axios.get("https://pokeapi.co/api/v2/type/")
+            setPokeType(resp.data.results)
         }
-        apiFetch()
+        getType()
     }, [])
     
-    useEffect(() =>{
-        const apiFetch = async() => {
-            const resp = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokeName}`)
-            setPokeDetail(resp.data)
-        }
-        apiFetch()
-    },[pokeName])
-    return (
+    useEffect(() => {
+        // const next = () => {
+        //     setNextURL(resp.data.next)
+        // }
+        // next()
+        const getPokemon = async () => {
+            const resp = await axios.get(apiURL)
+            setPokemonData(resp.data.results)
+            // window.onscroll = function () {
+                //     if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+                    //         setApiURl(resp.data.next)
+                    //     }
+                    // }
+                } 
+        getPokemon()
+}, [apiURL])
+    
+    return ( 
     <>
-        <mainContext.Provider value={{setPokeName, pokeDetail, searchList, setSearchList, pokeList, setPokeList, darkmodeStatus, setDarkmodeStatus, search, setSearch, pokeId, setPokeId}}>
+        <mainContext.Provider value={{pokemonData, setPokemonData, setApiURL, apiURL, nextURL, setNextURL, search, setSearch, pokeType, setPokeType, darkMode, setdarkMode}}>
             {children}
         </mainContext.Provider>
-    </>
-    )
+    </> 
+    );
 }
-
-export default MainProvider
+ 
+export default MainProvider;

@@ -1,19 +1,22 @@
-import Home from './pages/home/Home'
-import './App.css'
+
 import { Route, Routes } from 'react-router-dom'
-import Detail from './pages/detail/Detail'
-import Types from './pages/types/types'
+import './App.css'
+import Home from './pages/Home'
+import PokeDetail from './pages/PokeDetail'
+import Types from './pages/Types'
+import TypeCard from './components/typeCard/TypeCard'
 
 function App() {
 
 
   return (
     <>
-        <Routes>
-        <Route path='/' element= {<Home/>}/>
-        <Route path='/detail' element= {<Detail/>}/>
-        <Route path='/types' element= {<Types/>}/>
-      </Routes>
+    <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/pokemons/:id' element={<PokeDetail />} />
+        <Route path='/types' element={<Types />} />
+        <Route path='/types/:type' element={<TypeCard />} />
+    </Routes>
     </>
   )
 }

@@ -8,9 +8,9 @@ import MainProvider from './context/MainProvider.jsx'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
-      <MainProvider>
-        <App />
-      </MainProvider>
+    <MainProvider>
+    <App />
+    </MainProvider>
     </BrowserRouter>
   </React.StrictMode>,
 )
