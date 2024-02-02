@@ -1,7 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 
-const HomeCard = ({pokemon}) => {
+const HomeCard = ({ pokemon }) => {
+    
+    const id = useParams()
 
     const [img, setImg] = useState()
     const [pokeData, setPokeData] = useState()
@@ -24,9 +27,13 @@ const HomeCard = ({pokemon}) => {
 
     return ( 
         <>
-        <img src={img} alt="" />
-        <p>{pokemon.name}</p>
-        <p>#{pokeData}</p>
+        <Link to={`/pokemons/${pokeData}`}>
+        <div className="card">
+            <img src={img} alt="" />
+            <p>{pokemon.name}</p>
+                <p>#{pokeData}</p>
+        </div>
+            </Link>
         </>
      );
 }

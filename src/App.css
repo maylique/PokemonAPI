@@ -1,7 +1,209 @@
+:root {
+  --BUG: #3BB900;
+  --Dark: #1C1C1C;
+  --Dragon: #00458A;
+  --Electric: #FFE600;
+  --Fairy: #FFC2F9;
+  --Fighting: #E40000;
+  --Fire: #FF9900;
+  --Flying: #CCDADD;
+  --Ghost: #5A1E64;
+  --Grass: #57921C;
+  --Ground: #965A00;
+  --Ice: #6AD2FF;
+  --Normal: #B3B3B3;
+  --Plant: #70DF00;
+  --Poison: #AB00AE;
+  --Psychic: #FF81F2;
+  --Rock: #E1B237;
+  --Steel: #2A4950;
+  --Water: #00A0E4;
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
   place-items: center;
+}
+
+.grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4rem;
+  margin: 2rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 10rem;
+  /* background-color: #00a0e470; */
+  background-color: rgb(244, 220, 38);
+  box-shadow: 0 0 1rem rgba(255, 0, 0, 0.166);
+  border-radius: 1rem;
+  transition: .2s ease-in-out;
+  color: white; 
+  text-shadow: 0 0 10px #000;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  color: white;
+}
+
+.typebtn button {
+  padding: .6rem 1.1rem;
+  border: none;
+  border-radius: .6rem;
+  cursor: pointer;
+  width: 5rem;
+}
+
+.fire {
+  background-color: var(--Fire);
+}
+.bug {
+  background-color: var(--BUG);
+}
+.dark {
+  background-color: var(--Dark);
+}
+.dragon {
+  background-color: var(--Dragon);
+}
+.electric {
+  background-color: var(--Electric);
+}
+.fairy {
+  background-color: var(--Fairy);
+}
+.fighting {
+  background-color: var(--Fighting);
+}
+.flying {
+  background-color: var(--Flying);
+}
+.ghost {
+  background-color: var(--Ghost);
+}
+.grass {
+  background-color: var(--Grass);
+}
+.ground {
+  background-color: var(--Ground);
+}
+.ice {
+  background-color: var(--Ice);
+}
+.normal {
+  background-color: var(--Normal);
+}
+.plant {
+  background-color: var(--Plant);
+}
+.poison {
+  background-color: var(--Poison);
+}
+.psychic {
+  background-color: var(--Psychic);
+}
+.rock {
+  background-color: var(--Rock);
+}
+.steel {
+  background-color: var(--Steel);
+}
+.water {
+  background-color: var(--Water);
+}
+
+input[type=text] {
+  width: 16rem;
+  height: 2rem;
+  transition: .1s ease-out;
+}
+
+input[type=text]:focus {
+  width: 20rem;
+}
+
+input[type=text]::placeholder {
+  text-align: center;
+}
+
+.typeSection {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  max-width: 500px;
+  min-height: 40vh;
+  margin-top: 4rem;
+}
+
+.pokeTypes {
+  padding: .8rem 1.5rem;
+  border-radius: 1rem;
+  border: none;
+  width: 6rem;
+  transition: .2s ease-in-out;
+  cursor: pointer;
+  text-align: center;
+  text-shadow: 0 0 10px #000;
+}
+
+.pokeTypes:hover {
+  transform: scale(1.1);
+}
+
+.changeColor {
+  background: linear-gradient(to right, black 50%, white 50%);
+  height: 100%;
+  width: 4rem;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;  
+  column-gap: 4rem;
+}
+
+.nav * {
+  border-radius: .6rem;
+  border: none;
+  box-shadow: 0 0 .4rem black;
+}
+
+.typeBtn {
+  height: 100%;
+  padding: .6rem 1.6rem;
+}
+
+.logo {
+  max-height: 15rem;
+  margin-bottom: 2rem;
+}
+
+.bigPls {
+  scale: 2;
+}
+
+.gapPls {
+  margin: 2rem 2rem;
+  text-shadow: 0 0 10px #000;
+  transition: .2s ease-in-out;
+}
+
+.gapPls:hover {
+  transform: scale(1.1);
+}
+
+.height {
+  min-height: 50vh;
+  margin-top: 10vh;
 }
