@@ -170,7 +170,7 @@ input[type=text]::placeholder {
 .nav {
   display: flex;
   justify-content: center;  
-  column-gap: 4rem;
+  column-gap: 3rem;
 }
 
 .nav * {
@@ -206,4 +206,14 @@ input[type=text]::placeholder {
 .height {
   min-height: 50vh;
   margin-top: 10vh;
+}
+
+@media (max-width: 991.98px){
+  input[type=text]{
+    width: 10rem;
+  }
+
+  input[type=text]:focus{
+    width: 12rem;
+  }
 }
